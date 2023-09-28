@@ -37,6 +37,7 @@ let forceDownloaded = false
 const dumpOutputs = false
 const urlSearchParams = new URLSearchParams(window.location.search)
 const urlParams = Object.fromEntries(urlSearchParams.entries())
+const prefix = 'Giant_Giant_Steps'
 const v = 1000 * 60 * 10
 const n = 1000 * 60
 const f = 333
@@ -621,9 +622,9 @@ const drawCanvas = async () => {
 
 const autoDownloadCanvas = async (showHash = false) => {
   const element = document.createElement('a')
-  element.setAttribute('download', `Giant_Giant_Steps_${fxhash}`)
+  element.setAttribute('download', `${prefix}_${fxhash}`)
   // If a force Id is in the URL, then add that to the filename
-  if ('forceId' in urlParams) element.setAttribute('download', `Giant_Giant_Steps_${urlParams.forceId.toString().padStart(4, '0')}_${fxhash}`)
+  if ('forceId' in urlParams) element.setAttribute('download', `${prefix}_${urlParams.forceId.toString().padStart(4, '0')}_${fxhash}`)
   element.style.display = 'none'
   document.body.appendChild(element)
   let imageBlob = null
